@@ -63,11 +63,11 @@
   .error{color:#9b2c2c;background:#fff3f3;padding:10px;border-radius:8px}
 
   /* --- carousel styles --- */
-  .ann-carousel { position:relative; overflow:hidden; margin-top:12px; }
+  .ann-carousel { absolute; overflow:hidden; margin-top:12px; }
   .ann-slides { display:flex; gap:14px; transition:transform 0.45s cubic-bezier(.2,.9,.2,1); padding:6px; will-change:transform; }
   .ann-card {
     min-width:280px; max-width:640px; flex:0 0 68%; background:#fffdf6; border-left:4px solid var(--gold);
-    border-radius:10px; padding:14px; box-shadow:0 6px 20px rgba(10,20,30,0.04);
+    border-radius:5px; padding:8px; box-shadow:0 2px 4px rgba(10,20,30,0.04);
   }
   @media (max-width:980px){ .ann-card{ flex:0 0 92%; } }
   .ann-card h4{ margin:0; color:var(--blue); font-size:1rem; font-weight:700 }
@@ -159,7 +159,7 @@
           <div class="ann-indicators" id="ann-indicators" role="tablist" aria-label="Announcement pages"></div>
         </div>
 
-        <div id="ann-empty" class="muted" style="margin-top:10px; display:none">No announcements at the moment.</div>
+        <div id="ann-empty"            <div class="skeleton" style="height:12px;width:80%"></div>">No announcements at the moment.</div>
       </section>
 
     </main>
