@@ -1,69 +1,168 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.10">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In / Sign Out — Casual MITEC</title>
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-.buttonpma {
-  position: absolute;
-  display: flex;
-  padding: 9px 10px;
-  border: 5px solid rgba(5, 107, 250, 0.13); /* lighter accent */
-  border-radius: 5px;
-  background: transparent;
-  cursor: pointer;
-  overflow: hidden;
-  font-family: trebuchet, sans-serif;
-  font-size: 1.5em;
-  text-transform: uppercase;
-  color: transparent;
-  -webkit-text-stroke: 1px #0052CC; /* MITEC primary stroke */
-  letter-spacing: 1.6px;
-  animation: r1 3s ease-in-out infinite;
-  outline: circle;
-}
+  :root {
+    --mitec-gold: #D4AF37;
+    --mitec-mid: #224289; /* MITEC Blue */
+    --bg: #f7f9fc;
+    --card: #ffffff;
+    --muted: #55606a;
+    --radius: 12px;
+  }
 
-.actual-text {
-  position: inline-block;
-  z-index: 1.2;
-}
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--bg);
+    margin: 0;
+    padding: 20px;
+  }
 
-.hover-text {
-  position: absolute;
-  top: 6;
-  left: 0;
-  width: 0%;
-  height: 50%;
-  color: #00326b; /* MITEC accent glow */
-  border-right: 7px solid #0052CC;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: width 1.5s ease;
-  -webkit-text-stroke: 1.3px #056BFA;
-  z-index: 1;
-  pointer-events: none;
-}
+  .container {
+    max-width: 400px;
+    margin: 60px auto;
+    text-align: center;
+  }
 
-.buttonpma:hover .hover-text {
-  width: 99%;
-  filter: drop-shadow(0 0 20px #056BFA);
-}
+  .logo {
+    margin-bottom: 30px;
+  }
 
-@keyframes r1 {
-  0%, 100% { transform: rotate(5deg); }
-  40% { transform: rotate(-7deg) rotateZ(-8deg); }
-}
+  .logo img {
+    width: 140px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 30px 20px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+  }
+
+  /* Buttons as links */
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 14px 0;
+    margin: 12px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    border-radius: var(--radius);
+    text-decoration: none;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--mitec-mid);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  /* Hover and active effects */
+  .btn:hover {
+    transform: translateY(-7px) scale(1.12);
+    box-shadow: 0 10px 25px rgba(34,66,137,0.3);
+  }
+
+  .btn:active {
+    transform: translateY(-2px) scale(0.98);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  /* Pre-click glowing animation */
+  .btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(rgba(255,255,255,0.15), rgba(255,255,255,0) 50%);
+    border-radius: 50%;
+    animation: rotateGlow 3s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes rotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Tagline */
+  .tagline {
+    margin-bottom: 25px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* Attendance notice */
+  .attendance-note {
+    margin-top: 65px;
+    text-align: centre;
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .attendance-note p {
+    margin: 8px 0;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    margin: 40px 0 20px;
+    font-size: 0.85rem;
+  }
 </style>
 </head>
 <body>
 
-<button class="buttonpma" id="animatedButton">
-    <span class="actual-text">Sign IN / Sign OUT</span>
-    <span class="hover-text">Signed IN / OUT</span>
-</button>
+<div class="container">
+  <div class="logo">
+    <img src="https://mitec.com.my/static/img/logos/mitec-new-logo.png" alt="MITEC Logo">
+  </div>
 
+  <div class="tagline">
+    Casual Labour Attendance System,<br>
+    Human Resources Department
+  </div>
+
+  <div class="card">
+    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdlghgMsBRWFQf8QzOCkJXHhqfDf_KVoM2uZ5EagOe6rSyp9A/viewform?usp=dialog">
+      <i class="fa-solid fa-right-to-bracket"></i> Sign In
+    </a>
+    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSe-Fxc20YfHs13IRq-G2yrLFaNA3BDdTCAnEDEORLcXBGzv3A/viewform">
+      <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+    </a>
+    <a class="btn" href="https://lookerstudio.google.com/u/0/reporting/9b8a64f0-2e03-430d-aa29-bdb31989a35e/page/p_azx0l4vt7c">
+      <i class="fa-solid fa-clock"></i> My Attendance Record
+    </a>
+
+    <div class="attendance-note">
+      <p>You are advised to review your attendance entries in the <strong>My Attendance Record</strong> tab. If there are any missing entries, kindly complete your Sign In / Sign Out accordingly.</p>
+<br>
+      <p>Any questions regarding your salary or payout schedule should be directed to <strong>Ms. Ulfa Amran</strong> at <strong>012-552 9973</strong>.</p>
+   
+    </div>
+  </div>
+</div>
+
+<footer>© Malaysia International Trade & Exhibition Centre — CasualMITEC</footer>
+
+</body>
+</html>
 <script>
 document.getElementById('animatedButton').addEventListener('click', () => {
     setTimeout(() => {
